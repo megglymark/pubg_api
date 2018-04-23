@@ -69,7 +69,7 @@ class Match {
   */
   getWinner() {
     return this.rosters.find((r) => {
-      return r.attributes.won === 'true';
+      return r.won === 'true';
     });
   }
 

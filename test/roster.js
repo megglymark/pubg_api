@@ -33,17 +33,57 @@ describe('Roster', () => {
             expect(roster.raw).to.be.an('object');
         });
     });
-    describe('#attributes', () => {
+    describe('#shardId', () => {
         let roster;
         beforeEach(() => {
             roster = new Roster(match.raw.data.relationships.rosters.data[0],match.included);
         });
         it('exists', () => {
             expect(roster).to.exist;
-            expect(roster.attributes).to.exist;
+            expect(roster.shardId).to.exist;
         });
-        it('is an object', () => {
-            expect(roster.attributes).to.be.an('object');
+        it('is an string', () => {
+            expect(roster.shardId).to.be.a('string');
+        });
+    });
+    describe('#won', () => {
+        let roster;
+        beforeEach(() => {
+            roster = new Roster(match.raw.data.relationships.rosters.data[0],match.included);
+        });
+        it('exists', () => {
+            expect(roster).to.exist;
+            expect(roster.won).to.exist;
+        });
+        it('is an string', () => {
+            expect(roster.won).to.be.a('string');
+            expect(roster.won).to.match(/true|false/);
+        });
+    });
+    describe('#rank', () => {
+        let roster;
+        beforeEach(() => {
+            roster = new Roster(match.raw.data.relationships.rosters.data[0],match.included);
+        });
+        it('exists', () => {
+            expect(roster).to.exist;
+            expect(roster.rank).to.exist;
+        });
+        it('is an ', () => {
+            expect(roster.rank).to.be.a('number');
+        });
+    });
+    describe('#teamId', () => {
+        let roster;
+        beforeEach(() => {
+            roster = new Roster(match.raw.data.relationships.rosters.data[0],match.included);
+        });
+        it('exists', () => {
+            expect(roster).to.exist;
+            expect(roster.teamId).to.exist;
+        });
+        it('is an number', () => {
+            expect(roster.teamId).to.be.a('number');
         });
     });
     describe('#team', () => {
