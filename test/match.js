@@ -1,6 +1,7 @@
 const expect = require('chai').expect;
 const Match = require('../src/classes/match');
 const Roster = require('../src/classes/roster');
+const Participant = require('../src/classes/participant');
 const env = process.env;
 const rawMatchData = require('./mocks/Match.json');
 
@@ -13,6 +14,7 @@ describe('Match', () => {
         });
     });
 
+    // Properties
     describe('#raw', () => {
         let match;
         beforeEach(() => {
@@ -53,17 +55,69 @@ describe('Match', () => {
             expect(match.included).to.be.a('array');
         });
     });
-    describe('#attributes', () => {
+    describe('#createdAt', () => {
         let match;
         beforeEach(() => {
             match = new Match(rawMatchData);
         });
         it('exists', () => {
             expect(match).to.exist;
-            expect(match.attributes).to.exist;
+            expect(match.createdAt).to.exist;
         });
-        it('is an object', () => {
-            expect(match.attributes).to.be.a('object');
+        it('is an string', () => {
+            expect(match.createdAt).to.be.a('string');
+        });
+    });
+    describe('#duration', () => {
+        let match;
+        beforeEach(() => {
+            match = new Match(rawMatchData);
+        });
+        it('exists', () => {
+            expect(match).to.exist;
+            expect(match.duration).to.exist;
+        });
+        it('is an number', () => {
+            expect(match.duration).to.be.a('number');
+        });
+    });
+    describe('#gameMode', () => {
+        let match;
+        beforeEach(() => {
+            match = new Match(rawMatchData);
+        });
+        it('exists', () => {
+            expect(match).to.exist;
+            expect(match.gameMode).to.exist;
+        });
+        it('is an string', () => {
+            expect(match.gameMode).to.be.a('string');
+        });
+    });
+    describe('#mapName', () => {
+        let match;
+        beforeEach(() => {
+            match = new Match(rawMatchData);
+        });
+        it('exists', () => {
+            expect(match).to.exist;
+            expect(match.mapName).to.exist;
+        });
+        it('is an string', () => {
+            expect(match.mapName).to.be.a('string');
+        });
+    });
+    describe('#shardId', () => {
+        let match;
+        beforeEach(() => {
+            match = new Match(rawMatchData);
+        });
+        it('exists', () => {
+            expect(match).to.exist;
+            expect(match.shardId).to.exist;
+        });
+        it('is an string', () => {
+            expect(match.shardId).to.be.a('string');
         });
     });
     describe('#assets', () => {
@@ -121,6 +175,9 @@ describe('Match', () => {
             expect(match.spectators).to.be.a('array');
         });
     });
+
+
+    // Functions
     describe('#getWinner', () => {
         let match;
         beforeEach(() => {
@@ -133,14 +190,29 @@ describe('Match', () => {
         it('is a function',() => {
             expect(match.getWinner).to.be.a('function');
         });
-
         it('returns roster object', () => {
             expect(match.getWinner()).to.be.a.instanceof(Roster);
         });
     });
-    /*
     describe('#getStatsForPlayerId', () => {
+        let match;
+        beforeEach(() => {
+            match = new Match(rawMatchData);
+        });
+        it('exists',() => {
+            expect(match).to.exist;
+            expect(match.getStatsForPlayerId).to.exist
+        });
+        it('is a function',() => {
+            expect(match.getStatsForPlayerId).to.be.a('function');
+        });
+        it('returns Participant object', () => {
+            expect(match.getStatsForPlayerId('account.85fc')).to.be.undefined;
+            expect(match.getStatsForPlayerId('account.d6249ce62778429b999c469e32f785fc')).to.be.an.instanceof(Participant);
+        });
     });
+
+    /*
     describe('#getStatsForRosterId', () => {
     });
     */
