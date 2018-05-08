@@ -5,8 +5,12 @@ const rawMatchData = require('./mocks/Match.json');
 
 describe('Participant', () => {
   let match;
+  let rawParticipant;
   beforeEach(() => {
     match = new Match(rawMatchData);
+    rawParticipant = match.raw.included.find((i) => {
+      return i.type === 'participant';
+    });
   });
   describe('#constructor', () => {
     it('requires a raw roster object and raw included array', () => {
@@ -14,13 +18,13 @@ describe('Participant', () => {
       expect(() => {new Participant();}).to.throw(Error);
       expect(() => {new Participant({});}).to.throw(Error);
       //Correct
-      expect(() => {new Participant(match.rosters[0].participants[0]);}).to.not.throw(Error);
+      expect(() => {new Participant(rawParticipant);}).to.not.throw(Error);
     });
   });
   describe('#raw', () => {
     let participant
     beforeEach(() => {
-      participant = new Participant(match.rosters[0].participants[0]);
+      participant = new Participant(rawParticipant);
     });
     it('exists', () => {
       expect(participant).to.exist;
@@ -33,7 +37,7 @@ describe('Participant', () => {
   describe('#id', () => {
     let participant
     beforeEach(() => {
-      participant = new Participant(match.rosters[0].participants[0]);
+      participant = new Participant(rawParticipant);
     });
     it('exists', () => {
       expect(participant).to.exist;
@@ -47,7 +51,7 @@ describe('Participant', () => {
   describe('#DBNOs', () => {
     let participant;
     beforeEach(() => {
-      participant = new Participant(match.rosters[0].participants[0]);
+      participant = new Participant(rawParticipant);
     });
     it('exists', () => {
       expect(participant).to.exist;
@@ -60,7 +64,7 @@ describe('Participant', () => {
   describe('#assists', () => {
     let participant;
     beforeEach(() => {
-      participant = new Participant(match.rosters[0].participants[0]);
+      participant = new Participant(rawParticipant);
     });
     it('exists', () => {
       expect(participant).to.exist;
@@ -73,7 +77,7 @@ describe('Participant', () => {
   describe('#boosts', () => {
     let participant;
     beforeEach(() => {
-      participant = new Participant(match.rosters[0].participants[0]);
+      participant = new Participant(rawParticipant);
     });
     it('exists', () => {
       expect(participant).to.exist;
@@ -86,7 +90,7 @@ describe('Participant', () => {
   describe('#damageDealt', () => {
     let participant;
     beforeEach(() => {
-      participant = new Participant(match.rosters[0].participants[0]);
+      participant = new Participant(rawParticipant);
     });
     it('exists', () => {
       expect(participant).to.exist;
@@ -99,7 +103,7 @@ describe('Participant', () => {
   describe('#deathType', () => {
     let participant;
     beforeEach(() => {
-      participant = new Participant(match.rosters[0].participants[0]);
+      participant = new Participant(rawParticipant);
     });
     it('exists', () => {
       expect(participant).to.exist;
@@ -112,7 +116,7 @@ describe('Participant', () => {
   describe('#headshotKills', () => {
     let participant;
     beforeEach(() => {
-      participant = new Participant(match.rosters[0].participants[0]);
+      participant = new Participant(rawParticipant);
     });
     it('exists', () => {
       expect(participant).to.exist;
@@ -125,7 +129,7 @@ describe('Participant', () => {
   describe('#heals', () => {
     let participant;
     beforeEach(() => {
-      participant = new Participant(match.rosters[0].participants[0]);
+      participant = new Participant(rawParticipant);
     });
     it('exists', () => {
       expect(participant).to.exist;
@@ -138,7 +142,7 @@ describe('Participant', () => {
   describe('#killPlace', () => {
     let participant;
     beforeEach(() => {
-      participant = new Participant(match.rosters[0].participants[0]);
+      participant = new Participant(rawParticipant);
     });
     it('exists', () => {
       expect(participant).to.exist;
@@ -151,7 +155,7 @@ describe('Participant', () => {
   describe('#killPoints', () => {
     let participant;
     beforeEach(() => {
-      participant = new Participant(match.rosters[0].participants[0]);
+      participant = new Participant(rawParticipant);
     });
     it('exists', () => {
       expect(participant).to.exist;
@@ -164,7 +168,7 @@ describe('Participant', () => {
   describe('#killPointsDelta', () => {
     let participant;
     beforeEach(() => {
-      participant = new Participant(match.rosters[0].participants[0]);
+      participant = new Participant(rawParticipant);
     });
     it('exists', () => {
       expect(participant).to.exist;
@@ -177,7 +181,7 @@ describe('Participant', () => {
   describe('#killStreaks', () => {
     let participant;
     beforeEach(() => {
-      participant = new Participant(match.rosters[0].participants[0]);
+      participant = new Participant(rawParticipant);
     });
     it('exists', () => {
       expect(participant).to.exist;
@@ -190,7 +194,7 @@ describe('Participant', () => {
   describe('#kills', () => {
     let participant;
     beforeEach(() => {
-      participant = new Participant(match.rosters[0].participants[0]);
+      participant = new Participant(rawParticipant);
     });
     it('exists', () => {
       expect(participant).to.exist;
@@ -203,7 +207,7 @@ describe('Participant', () => {
   describe('#lastKillPoints', () => {
     let participant;
     beforeEach(() => {
-      participant = new Participant(match.rosters[0].participants[0]);
+      participant = new Participant(rawParticipant);
     });
     it('exists', () => {
       expect(participant).to.exist;
@@ -216,7 +220,7 @@ describe('Participant', () => {
   describe('#lastWinPoints', () => {
     let participant;
     beforeEach(() => {
-      participant = new Participant(match.rosters[0].participants[0]);
+      participant = new Participant(rawParticipant);
     });
     it('exists', () => {
       expect(participant).to.exist;
@@ -229,7 +233,7 @@ describe('Participant', () => {
   describe('#longestKill', () => {
     let participant;
     beforeEach(() => {
-      participant = new Participant(match.rosters[0].participants[0]);
+      participant = new Participant(rawParticipant);
     });
     it('exists', () => {
       expect(participant).to.exist;
@@ -242,7 +246,7 @@ describe('Participant', () => {
   describe('#mostDamage', () => {
     let participant;
     beforeEach(() => {
-      participant = new Participant(match.rosters[0].participants[0]);
+      participant = new Participant(rawParticipant);
     });
     it('exists', () => {
       expect(participant).to.exist;
@@ -255,7 +259,7 @@ describe('Participant', () => {
   describe('#name', () => {
     let participant;
     beforeEach(() => {
-      participant = new Participant(match.rosters[0].participants[0]);
+      participant = new Participant(rawParticipant);
     });
     it('exists', () => {
       expect(participant).to.exist;
@@ -268,7 +272,7 @@ describe('Participant', () => {
   describe('#playerId', () => {
     let participant;
     beforeEach(() => {
-      participant = new Participant(match.rosters[0].participants[0]);
+      participant = new Participant(rawParticipant);
     });
     it('exists', () => {
       expect(participant).to.exist;
@@ -281,7 +285,7 @@ describe('Participant', () => {
   describe('#revives', () => {
     let participant;
     beforeEach(() => {
-      participant = new Participant(match.rosters[0].participants[0]);
+      participant = new Participant(rawParticipant);
     });
     it('exists', () => {
       expect(participant).to.exist;
@@ -294,7 +298,7 @@ describe('Participant', () => {
   describe('#rideDistance', () => {
     let participant;
     beforeEach(() => {
-      participant = new Participant(match.rosters[0].participants[0]);
+      participant = new Participant(rawParticipant);
     });
     it('exists', () => {
       expect(participant).to.exist;
@@ -307,7 +311,7 @@ describe('Participant', () => {
   describe('#roadKills', () => {
     let participant;
     beforeEach(() => {
-      participant = new Participant(match.rosters[0].participants[0]);
+      participant = new Participant(rawParticipant);
     });
     it('exists', () => {
       expect(participant).to.exist;
@@ -320,7 +324,7 @@ describe('Participant', () => {
   describe('#teamKills', () => {
     let participant;
     beforeEach(() => {
-      participant = new Participant(match.rosters[0].participants[0]);
+      participant = new Participant(rawParticipant);
     });
     it('exists', () => {
       expect(participant).to.exist;
@@ -333,7 +337,7 @@ describe('Participant', () => {
   describe('#timeSurvived', () => {
     let participant;
     beforeEach(() => {
-      participant = new Participant(match.rosters[0].participants[0]);
+      participant = new Participant(rawParticipant);
     });
     it('exists', () => {
       expect(participant).to.exist;
@@ -346,7 +350,7 @@ describe('Participant', () => {
   describe('#vehicleDestroys', () => {
     let participant;
     beforeEach(() => {
-      participant = new Participant(match.rosters[0].participants[0]);
+      participant = new Participant(rawParticipant);
     });
     it('exists', () => {
       expect(participant).to.exist;
@@ -359,7 +363,7 @@ describe('Participant', () => {
   describe('#walkDistance', () => {
     let participant;
     beforeEach(() => {
-      participant = new Participant(match.rosters[0].participants[0]);
+      participant = new Participant(rawParticipant);
     });
     it('exists', () => {
       expect(participant).to.exist;
@@ -372,7 +376,7 @@ describe('Participant', () => {
   describe('#weaponsAcquired', () => {
     let participant;
     beforeEach(() => {
-      participant = new Participant(match.rosters[0].participants[0]);
+      participant = new Participant(rawParticipant);
     });
     it('exists', () => {
       expect(participant).to.exist;
@@ -385,7 +389,7 @@ describe('Participant', () => {
   describe('#winPlace', () => {
     let participant;
     beforeEach(() => {
-      participant = new Participant(match.rosters[0].participants[0]);
+      participant = new Participant(rawParticipant);
     });
     it('exists', () => {
       expect(participant).to.exist;
@@ -398,7 +402,7 @@ describe('Participant', () => {
   describe('#winPoints', () => {
     let participant;
     beforeEach(() => {
-      participant = new Participant(match.rosters[0].participants[0]);
+      participant = new Participant(rawParticipant);
     });
     it('exists', () => {
       expect(participant).to.exist;
@@ -411,7 +415,7 @@ describe('Participant', () => {
   describe('#winPointsDelta', () => {
     let participant;
     beforeEach(() => {
-      participant = new Participant(match.rosters[0].participants[0]);
+      participant = new Participant(rawParticipant);
     });
     it('exists', () => {
       expect(participant).to.exist;
@@ -419,6 +423,24 @@ describe('Participant', () => {
     });
     it('is an number', () => {
       expect(participant.winPointsDelta).to.be.a('number');
+    });
+  });
+
+  // Functions
+  describe('#getStats', () => {
+    let participant;
+    beforeEach(() => {
+      participant = new Participant(rawParticipant);
+    });
+    it('exists', () => {
+      expect(participant).to.exist;
+      expect(participant.getStats).to.exist;
+    });
+    it('is a function', () => {
+      expect(participant.getStats).to.be.a('function');
+    });
+    it('returns numerical stat object', () => {
+      expect(participant.getStats()).to.be.an('object');
     });
   });
 });

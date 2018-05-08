@@ -78,6 +78,25 @@ class Participant {
     this.winPoints = source.attributes.stats.winPoints;
     this.winPointsDelta = source.attributes.stats.winPointsDelta;
   }
+  
+
+  /**
+   * Returns the numerical stats for a participant
+   * 
+   * @returns {object} - The object containing all the numerical stats of a participant
+   */
+  getStats() {
+    const stats = Object.keys(this).map((key) => {
+      return {[key]: this[key]};
+    }).reduce((result,currentKeyValuePair) => {
+      const key = Object.keys(currentKeyValuePair)[0];
+      if (typeof(currentKeyValuePair[key]) === 'number') {
+        result[key] = currentKeyValuePair[key];
+      }
+      return result;
+    }, {});
+    return stats;
+  }
 }
   
 module.exports  =  Participant;

@@ -116,4 +116,22 @@ describe('Roster', () => {
             expect(roster.participants).to.be.an('array');
         });
     });
+
+    // Functions
+    describe('#getStatsForRoster', () => {
+        let roster;
+        beforeEach(() => {
+            roster = new Roster(match.raw.data.relationships.rosters.data[0],match.included);
+        });
+        it('exists',() => {
+            expect(roster).to.exist;
+            expect(roster.getStatsForRoster).to.exist
+        });
+        it('is a function',() => {
+            expect(roster.getStatsForRoster).to.be.a('function');
+        });
+        it('returns object', () => {
+            expect(roster.getStatsForRoster()).to.be.a('object');
+        });
+    });
 });
